@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      padding: 10px;
+      font-size: 18px;
+      width: 600px;
+      border: 1px solid #4CAF50;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .search-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .search-button:hover {
+      background-color: #45a049;
+    }
+
+    .search-button:active {
+      background-color: #3e8e41;
+    }
+
+    .results {
+      margin-top: 20px;
+    }
+
+    .result-link {
+      display: block;
+      margin-bottom: 10px;
+      color: #065fd4;
+      text-decoration: none;
+    }
+
+    .result-score {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Page</h1>
+  <div class="form">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.search.label }}
+      {{ form.search(class='search-input') }}
+      {{ form.submit(class='search-button', value='Search') }}
+    </form>
+  </div>
+  <div class="results">
+    {% for result in results %}
+      <a href="{{ result['Question Link'] }}" class="result-link">{{ result['Question Link'] }}</a>
+      <p class="result-score">Score: {{ result['Score'] }}</p>
+    {% endfor %}
+  </div>
+</body>
+</html>
